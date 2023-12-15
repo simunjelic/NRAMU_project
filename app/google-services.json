@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "485862946963",
+    "project_id": "nramu-9e2ed",
+    "storage_bucket": "nramu-9e2ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485862946963:android:15879414fb5c9355753566",
+        "android_client_info": {
+          "package_name": "ba.sum.fsre.nramu_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVajbWjFOiLCgG6LU8Cm0SjGPh88YU3iU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
