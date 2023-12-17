@@ -21,51 +21,51 @@ import ba.sum.fsre.nramu_project.Model.CourseRVModal;
 
 public class AddCourseActivity extends AppCompatActivity {
 
-    private Button addCourseBtn;
-    private TextInputEditText courseNameEdt, courseDescEdt, coursePriceEdt, bestSuitedEdt, courseImgEdt, courseLinkEdt;
+    private Button addBtn;
+    private TextInputEditText NameEdt, DescEdt, AutorIDEdt, AutorNameEdt, BrTelefonaEdt, slikaEdt;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private ProgressBar loadingPB;
-    private String courseID;
+    private String productID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_course);
 
-        addCourseBtn = findViewById(R.id.idBtnAddCourse);
-        courseNameEdt = findViewById(R.id.idEdtCourseName);
-        courseDescEdt = findViewById(R.id.idEdtCourseDescription);
-        coursePriceEdt = findViewById(R.id.idEdtCoursePrice);
-        bestSuitedEdt = findViewById(R.id.idEdtSuitedFor);
-        courseImgEdt = findViewById(R.id.idEdtCourseImageLink);
-        courseLinkEdt = findViewById(R.id.idEdtCourseLink);
+        addBtn = findViewById(R.id.idBtnAdd);
+        NameEdt = findViewById(R.id.ImeTxt);
+        DescEdt = findViewById(R.id.OpisTxt);
+        AutorIDEdt = findViewById(R.id.AutorIDTxt);
+        AutorNameEdt = findViewById(R.id.AutorNameTxt);
+        BrTelefonaEdt = findViewById(R.id.BrTelefonaTxt);
+        slikaEdt = findViewById(R.id.slikaTxt);
         loadingPB = findViewById(R.id.idPBLoading);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Courses");
+        databaseReference = firebaseDatabase.getReference("Product");
         //Toast.makeText(AddCourseActivity.this,"dosao dovdje",Toast.LENGTH_SHORT).show();
 
-        addCourseBtn.setOnClickListener(new View.OnClickListener() {
+        addBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 loadingPB.setVisibility(View.VISIBLE);
 
-                String courseName = courseNameEdt.getText().toString();
-                String courseDesc = courseDescEdt.getText().toString();
-                String coursePrice = coursePriceEdt.getText().toString();
-                String bestSuited = bestSuitedEdt.getText().toString();
-                String courseImg = courseImgEdt.getText().toString();
-                String courseLink = courseLinkEdt.getText().toString();
+                String Name = NameEdt.getText().toString();
+                String Desc = DescEdt.getText().toString();
+                String AutorID = AutorIDEdt.getText().toString();
+                String AutorName = AutorNameEdt.getText().toString();
+                String BrTelefona = BrTelefonaEdt.getText().toString();
+                String slika = slikaEdt.getText().toString();
                 Toast.makeText(AddCourseActivity.this,"Dosao dovdje",Toast.LENGTH_SHORT).show();
-                courseID = courseName;
-                CourseRVModal courseRVModal = new CourseRVModal(courseID, courseName, courseDesc, coursePrice, bestSuited, courseImg, courseLink);
+                productID = AutorID;
+                CourseRVModal courseRVModal = new CourseRVModal(productID, Name, Desc, AutorID, AutorName, BrTelefona, slika);
 
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                        databaseReference.child(courseID).setValue(courseRVModal);
+                        databaseReference.child(productID).setValue(courseRVModal);
                         Toast.makeText(AddCourseActivity.this,"Ubaceno",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(AddCourseActivity.this, MainActivity.class));
                     }

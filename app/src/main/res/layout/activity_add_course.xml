@@ -26,13 +26,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter Course Name"
+                android:hint="Name"
                 android:padding="5dp"
                 android:textColorHint="@color/white"
                 app:hintTextColor="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtCourseName"
+                    android:id="@+id/ImeTxt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -52,23 +52,22 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter Course Price"
+                android:hint="AutorID"
                 android:padding="5dp"
                 android:textColorHint="@color/white"
 
                 app:hintTextColor="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtCoursePrice"
+                    android:id="@+id/AutorIDTxt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:importantForAutofill="no"
-                    android:inputType="phone"
+                    android:inputType="number"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
-                    android:textSize="14sp"
-                     />
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--edit text for course suited for-->
@@ -80,13 +79,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter Course Suited For"
+                android:hint="AutorIme"
                 android:padding="5dp"
                 android:textColorHint="@color/white"
                 app:hintTextColor="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtSuitedFor"
+                    android:id="@+id/AutorNameTxt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -106,18 +105,18 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter Course Image Link"
+                android:hint="Broj telefona"
                 android:padding="5dp"
                 android:textColorHint="@color/white"
                 app:hintTextColor="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtCourseImageLink"
+                    android:id="@+id/BrTelefonaTxt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:importantForAutofill="no"
-                    android:inputType="textImeMultiLine|textMultiLine"
+                    android:inputType="phone"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textSize="14sp" />
@@ -132,13 +131,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter Course Link"
+                android:hint="Slika"
                 android:padding="5dp"
                 android:textColorHint="@color/white"
                 app:hintTextColor="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtCourseLink"
+                    android:id="@+id/slikaTxt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -159,13 +158,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:hint="Enter Course Description"
+                android:hint=" Description"
                 android:padding="5dp"
                 android:textColorHint="@color/white"
                 app:hintTextColor="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idEdtCourseDescription"
+                    android:id="@+id/OpisTxt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -178,7 +177,7 @@
 
             <!--button for adding a new course-->
             <Button
-                android:id="@+id/idBtnAddCourse"
+                android:id="@+id/idBtnAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -186,7 +185,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
 
-                android:text="Add Your Course"
+                android:text="Dodaj"
                 android:textAllCaps="false" />
 
 

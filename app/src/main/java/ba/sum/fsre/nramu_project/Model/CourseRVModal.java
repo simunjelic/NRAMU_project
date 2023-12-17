@@ -4,37 +4,105 @@ import android.os.Parcelable;
 
 public class CourseRVModal implements Parcelable {
     // creating variables for our different fields.
-    private String courseName;
-    private String courseDescription;
-    private String coursePrice;
-    private String bestSuitedFor;
-    private String courseImg;
-    private String courseLink;
-    private String courseId;
+    private String Name;
+    private String Desc;
+    private String AutorID;
 
-
-    public String getCourseId() {
-        return courseId;
+    public String getName() {
+        return Name;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setName(String name) {
+        Name = name;
     }
 
+    public String getDesc() {
+        return Desc;
+    }
 
-    // creating an empty constructor.
-    public CourseRVModal() {
+    public void setDesc(String desc) {
+        Desc = desc;
+    }
 
+    public String getAutorID() {
+        return AutorID;
+    }
+
+    public void setAutorID(String autorID) {
+        AutorID = autorID;
+    }
+
+    public String getAutorName() {
+        return AutorName;
+    }
+
+    public void setAutorName(String autorName) {
+        AutorName = autorName;
+    }
+
+    public String getBrTelefona() {
+        return BrTelefona;
+    }
+
+    public void setBrTelefona(String brTelefona) {
+        BrTelefona = brTelefona;
+    }
+
+    public String getSlika() {
+        return slika;
+    }
+
+    public void setSlika(String slika) {
+        this.slika = slika;
+    }
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public void setProductID(String productID) {
+        this.productID = productID;
+    }
+
+    private String AutorName;
+    private String BrTelefona;
+    private String slika;
+    private String productID;
+
+    public CourseRVModal(String name, String desc, String autorID, String autorName, String brTelefona, String slika, String productID) {
+        Name = name;
+        Desc = desc;
+        AutorID = autorID;
+        AutorName = autorName;
+        BrTelefona = brTelefona;
+        this.slika = slika;
+        this.productID = productID;
     }
 
     protected CourseRVModal(Parcel in) {
-        courseName = in.readString();
-        courseId = in.readString();
-        courseDescription = in.readString();
-        coursePrice = in.readString();
-        bestSuitedFor = in.readString();
-        courseImg = in.readString();
-        courseLink = in.readString();
+        Name = in.readString();
+        Desc = in.readString();
+        AutorID = in.readString();
+        AutorName = in.readString();
+        BrTelefona = in.readString();
+        slika = in.readString();
+        productID = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(Name);
+        dest.writeString(Desc);
+        dest.writeString(AutorID);
+        dest.writeString(AutorName);
+        dest.writeString(BrTelefona);
+        dest.writeString(slika);
+        dest.writeString(productID);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<CourseRVModal> CREATOR = new Creator<CourseRVModal>() {
@@ -48,80 +116,4 @@ public class CourseRVModal implements Parcelable {
             return new CourseRVModal[size];
         }
     };
-
-    // creating getter and setter methods.
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public String getCourseDescription() {
-        return courseDescription;
-    }
-
-    public void setCourseDescription(String courseDescription) {
-        this.courseDescription = courseDescription;
-    }
-
-    public String getCoursePrice() {
-        return coursePrice;
-    }
-
-    public void setCoursePrice(String coursePrice) {
-        this.coursePrice = coursePrice;
-    }
-
-    public String getBestSuitedFor() {
-        return bestSuitedFor;
-    }
-
-    public void setBestSuitedFor(String bestSuitedFor) {
-        this.bestSuitedFor = bestSuitedFor;
-    }
-
-    public String getCourseImg() {
-        return courseImg;
-    }
-
-    public void setCourseImg(String courseImg) {
-        this.courseImg = courseImg;
-    }
-
-    public String getCourseLink() {
-        return courseLink;
-    }
-
-    public void setCourseLink(String courseLink) {
-        this.courseLink = courseLink;
-    }
-
-
-    public CourseRVModal(String courseId, String courseName, String courseDescription, String coursePrice, String bestSuitedFor, String courseImg, String courseLink) {
-        this.courseName = courseName;
-        this.courseId = courseId;
-        this.courseDescription = courseDescription;
-        this.coursePrice = coursePrice;
-        this.bestSuitedFor = bestSuitedFor;
-        this.courseImg = courseImg;
-        this.courseLink = courseLink;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(courseName);
-        dest.writeString(courseId);
-        dest.writeString(courseDescription);
-        dest.writeString(coursePrice);
-        dest.writeString(bestSuitedFor);
-        dest.writeString(courseImg);
-        dest.writeString(courseLink);
-    }
 }
