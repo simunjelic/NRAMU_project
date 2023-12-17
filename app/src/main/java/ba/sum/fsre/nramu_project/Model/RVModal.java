@@ -2,7 +2,7 @@ package ba.sum.fsre.nramu_project.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class CourseRVModal implements Parcelable {
+public class RVModal implements Parcelable {
     // creating variables for our different fields.
     private String Name;
     private String Desc;
@@ -69,7 +69,7 @@ public class CourseRVModal implements Parcelable {
     private String slika;
     private String productID;
 
-    public CourseRVModal(String name, String desc, String autorID, String autorName, String brTelefona, String slika, String productID) {
+    public RVModal(String name, String desc, String autorID, String autorName, String brTelefona, String slika, String productID) {
         Name = name;
         Desc = desc;
         AutorID = autorID;
@@ -79,7 +79,7 @@ public class CourseRVModal implements Parcelable {
         this.productID = productID;
     }
 
-    protected CourseRVModal(Parcel in) {
+    protected RVModal(Parcel in) {
         Name = in.readString();
         Desc = in.readString();
         AutorID = in.readString();
@@ -105,15 +105,15 @@ public class CourseRVModal implements Parcelable {
         return 0;
     }
 
-    public static final Creator<CourseRVModal> CREATOR = new Creator<CourseRVModal>() {
+    public static final Creator<RVModal> CREATOR = new Creator<RVModal>() {
         @Override
-        public CourseRVModal createFromParcel(Parcel in) {
-            return new CourseRVModal(in);
+        public RVModal createFromParcel(Parcel in) {
+            return new RVModal(in);
         }
 
         @Override
-        public CourseRVModal[] newArray(int size) {
-            return new CourseRVModal[size];
+        public RVModal[] newArray(int size) {
+            return new RVModal[size];
         }
     };
 }

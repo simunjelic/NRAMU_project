@@ -17,9 +17,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import ba.sum.fsre.nramu_project.Model.CourseRVModal;
+import ba.sum.fsre.nramu_project.Model.RVModal;
 
-public class AddCourseActivity extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity {
 
     private Button addBtn;
     private TextInputEditText NameEdt, DescEdt, AutorIDEdt, AutorNameEdt, BrTelefonaEdt, slikaEdt;
@@ -31,7 +31,7 @@ public class AddCourseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_course);
+        setContentView(R.layout.activity_add);
 
         addBtn = findViewById(R.id.idBtnAdd);
         NameEdt = findViewById(R.id.ImeTxt);
@@ -57,22 +57,22 @@ public class AddCourseActivity extends AppCompatActivity {
                 String AutorName = AutorNameEdt.getText().toString();
                 String BrTelefona = BrTelefonaEdt.getText().toString();
                 String slika = slikaEdt.getText().toString();
-                Toast.makeText(AddCourseActivity.this,"Dosao dovdje",Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddActivity.this,"Dosao dovdje",Toast.LENGTH_SHORT).show();
                 productID = AutorID;
-                CourseRVModal courseRVModal = new CourseRVModal(productID, Name, Desc, AutorID, AutorName, BrTelefona, slika);
+                RVModal courseRVModal = new RVModal(productID, Name, Desc, AutorID, AutorName, BrTelefona, slika);
 
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         databaseReference.child(productID).setValue(courseRVModal);
-                        Toast.makeText(AddCourseActivity.this,"Ubaceno",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(AddCourseActivity.this, MainActivity.class));
+                        Toast.makeText(AddActivity.this,"Ubaceno",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(AddActivity.this, MainActivity.class));
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(AddCourseActivity.this,"nije uspjelo",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddActivity.this,"nije uspjelo",Toast.LENGTH_SHORT).show();
 
                     }
                 });
