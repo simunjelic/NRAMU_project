@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".fragment.AddPostFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/titleEditText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Dodaj oglas" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/postImage"
+        android:hint="Naslov"
+        android:padding="8dp"
+        android:inputType="text" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/breedEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleEditText"
+        android:hint="Vrsta"
+        android:padding="8dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/authorEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/breedEditText"
+        android:hint="Autor"
+        android:padding="8dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/phoneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/authorEditText"
+        android:hint="Broj telefona"
+        android:padding="8dp"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/descriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phoneEditText"
+        android:hint="Opis objave"
+        android:padding="8dp"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/buttonUploadImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Odabir slike" />
+
+    <Button
+        android:id="@+id/submitPostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptionEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Dodaj objavu" />
+
+</LinearLayout>
