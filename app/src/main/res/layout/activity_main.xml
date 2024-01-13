@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#FF5722"
-        app:title="Prjatelji životinja"
+        app:title="Prijatelji životinja"
         app:titleTextColor="@color/white" />
 
     <com.google.android.material.tabs.TabLayout
