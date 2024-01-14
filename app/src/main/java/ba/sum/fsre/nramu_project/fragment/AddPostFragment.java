@@ -31,7 +31,7 @@ import com.google.firebase.storage.UploadTask;
 import java.util.UUID;
 
 import ba.sum.fsre.nramu_project.R;
-import ba.sum.fsre.nramu_project.model.Post;
+import ba.sum.fsre.nramu_project.Model.Post;
 
 
 public class AddPostFragment extends Fragment {

@@ -1,4 +1,4 @@
-package ba.sum.fsre.nramu_project.model;
+package ba.sum.fsre.nramu_project.Model;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 

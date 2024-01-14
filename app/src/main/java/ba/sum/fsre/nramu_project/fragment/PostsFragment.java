@@ -2,9 +2,7 @@ package ba.sum.fsre.nramu_project.fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import ba.sum.fsre.nramu_project.R;
 import ba.sum.fsre.nramu_project.adapter.PostAdapter;
-import ba.sum.fsre.nramu_project.model.Post;
+import ba.sum.fsre.nramu_project.Model.Post;
 
 
 public class PostsFragment extends Fragment {

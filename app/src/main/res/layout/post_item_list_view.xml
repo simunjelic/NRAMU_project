@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,13 +33,11 @@
             android:drawablePadding="8dp"
             android:elevation="2dp" />
 
-
         <TextView
             android:id="@+id/breed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Breed"
-
             android:drawablePadding="8dp" />
 
         <TextView
@@ -62,5 +60,33 @@
             android:layout_height="wrap_content"
             android:drawablePadding="8dp"
             android:text="Description" />
+
+        <!-- Buttons in the same row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#FF5722"
+                android:text="Uredi"
+                android:textColorHighlight="#FF5722"
+                android:textColorLink="#FF5722" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#FF5722"
+                android:text="Obriši" />
+
+        </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
