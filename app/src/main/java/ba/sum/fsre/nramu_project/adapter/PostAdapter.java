@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -50,18 +52,37 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post,PostAdapter.PostVi
     @Override
     protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull Post model) {
 
+        String author;
         if (model.author.contains("@")) {
             String authorEmail = model.author;
-            model.author = authorEmail.substring(0, authorEmail.indexOf('@'));
+            author = authorEmail.substring(0, authorEmail.indexOf('@'));
+        }else{
+            author = model.author;
         }
         holder.title.setText(model.title);
         holder.breed.setText(model.breed);
-        holder.author.setText(model.author);
+        holder.author.setText(author);
         holder.phone.setText(model.phone);
         holder.description.setText(model.description);
         Picasso.get().load(model.picture).into(holder.picture);
 
+        String loggedInUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        String authorEmail = model.author;
+
+        if (loggedInUserEmail != null && loggedInUserEmail.equals(authorEmail)) {
+            // Ako je trenutni prijavljeni korisnik autor posta, postavite gumbe na vidljive
+            holder.btnUpdate.setVisibility(View.VISIBLE);
+            holder.btnDelete.setVisibility(View.VISIBLE);
+        } else {
+            // Inače, postavite gumbe na nevidljive
+            holder.btnUpdate.setVisibility(View.GONE);
+            holder.btnDelete.setVisibility(View.GONE);
+        }
+
     }
+
+
+
 
     @NonNull
     @Override
@@ -74,6 +95,8 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post,PostAdapter.PostVi
     Button btnUpdate, btnDelete;
 
     public class PostViewHolder extends RecyclerView.ViewHolder{
+        Button btnUpdate,btnDelete;
+
         ImageView picture;
         TextView title, breed, author, phone, description;
         public PostViewHolder(@NonNull View itemView) {
@@ -84,6 +107,8 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post,PostAdapter.PostVi
             this.author = itemView.findViewById(R.id.author);
             this.phone = itemView.findViewById(R.id.phone);
             this.description = itemView.findViewById(R.id.description);
+            this.btnUpdate = itemView.findViewById(R.id.btnUpdate);
+            this.btnDelete = itemView.findViewById(R.id.btnDelete);
 
             btnUpdate = itemView.findViewById(R.id.btnUpdate);
             btnDelete = itemView.findViewById(R.id.btnDelete);
@@ -147,21 +172,26 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post,PostAdapter.PostVi
 
                 }
             });
+            // Provjera autorstva i postavljanje vidljivosti gumba temeljem toga
+            String loggedInUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            if (loggedInUserEmail != null && loggedInUserEmail.equals(author.getText().toString())) {
+                // Prijavljeni korisnik je autor posta
+                btnUpdate.setVisibility(View.VISIBLE);
+                btnDelete.setVisibility(View.VISIBLE);
+            } else {
+                // Postavite gumbe na nevidljivo ako autor posta nije prijavljeni korisnik
+                btnUpdate.setVisibility(View.GONE);
+                btnDelete.setVisibility(View.GONE);
+            }
+
+
+
+
         }
     }
 
-    private void deletePost(Integer postition) {
-        // Implement the logic to delete the post from the database
-        // You can use the post ID or any other identifier to delete the specific post
 
-        // For example:
-        // String postId = getRef(getAdapterPosition()).getKey();
-        // postsRef.child(postId).removeValue();
 
-        // After deletion, you might want to navigate back or perform any other action
-        // For simplicity, I'll just log a message here
-        Log.d("PostAdapter", "Post deleted for position: " + postition);
-    }
 
 
 }
