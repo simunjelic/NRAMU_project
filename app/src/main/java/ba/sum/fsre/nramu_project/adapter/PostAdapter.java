@@ -1,6 +1,8 @@
 package ba.sum.fsre.nramu_project.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,12 +11,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -111,15 +116,52 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post,PostAdapter.PostVi
             btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // Handle delete button click, e.g., show a confirmation dialog
-                    // You can then call a method to delete the post from the database
-                    // For simplicity, I'll just log a message here
-                    Log.d("PostAdapter", "Delete clicked for position: " + getAdapterPosition());
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(btnUpdate.getContext());
+                    builder.setTitle("Potvrda brisanja");
+                    builder.setMessage("Jeste li sigurni da želite obrisati objavu?");
+
+                    // Add the buttons
+                    builder.setPositiveButton("Da", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User clicked Yes button, proceed with deletion
+                            String postId = getRef(getAdapterPosition()).getKey();
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference postsRef = database.getReference("posts");
+                            postsRef.child(postId).removeValue();
+
+                            Toast.makeText(btnUpdate.getContext(), "Objava uspješno obrisana!", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                    builder.setNegativeButton("Ne", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User clicked No button, do nothing
+                            dialog.dismiss();
+                        }
+                    });
+
+                    // Create and show the AlertDialog
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
                 }
             });
         }
     }
 
+    private void deletePost(Integer postition) {
+        // Implement the logic to delete the post from the database
+        // You can use the post ID or any other identifier to delete the specific post
+
+        // For example:
+        // String postId = getRef(getAdapterPosition()).getKey();
+        // postsRef.child(postId).removeValue();
+
+        // After deletion, you might want to navigate back or perform any other action
+        // For simplicity, I'll just log a message here
+        Log.d("PostAdapter", "Post deleted for position: " + postition);
+    }
 
 
 }
