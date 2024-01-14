@@ -1,14 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- fragment_profile.xml -->
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ProfileFragment">
+    android:padding="16dp"
+    tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profil" />
+        android:id="@+id/currentUserTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/newPasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentUserTextView"
+        android:layout_marginTop="16dp"
+        android:hint="Nova lozinka"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/currentPasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/newPasswordEditText"
+        android:layout_marginTop="16dp"
+        android:hint="Trenutna lozinka"
+        android:inputType="textPassword" />
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/updatePasswordButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentPasswordEditText"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:text="Promjena lozinke" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/deleteUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentPasswordEditText"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/rounded_button"
+
+        android:text="Izbrisi profil" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/updatePasswordButton"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/rounded_button"
+        android:text="Odjava" />
+
+</RelativeLayout>
