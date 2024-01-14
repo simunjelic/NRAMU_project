@@ -37,6 +37,11 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post,PostAdapter.PostVi
 
     @Override
     protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull Post model) {
+
+        if (model.author.contains("@")) {
+            String authorEmail = model.author;
+            model.author = authorEmail.substring(0, authorEmail.indexOf('@'));
+        }
         holder.title.setText(model.title);
         holder.breed.setText(model.breed);
         holder.author.setText(model.author);

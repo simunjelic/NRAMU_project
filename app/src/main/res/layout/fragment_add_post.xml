@@ -32,7 +32,8 @@
         android:layout_below="@id/breedEditText"
         android:hint="Autor"
         android:padding="8dp"
-        android:inputType="text" />
+        android:inputType="text"
+        android:visibility="gone"/>
 
     <EditText
         android:id="@+id/phoneEditText"

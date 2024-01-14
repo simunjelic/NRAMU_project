@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -89,7 +91,7 @@ public class AddPostFragment extends Fragment {
     }
 
     private boolean validateInputs(String title, String breed, String author, String phoneNumber, String description) {
-        if (title.isEmpty() || breed.isEmpty() || author.isEmpty() || phoneNumber.isEmpty() || description.isEmpty()) {
+        if (title.isEmpty() || breed.isEmpty() || phoneNumber.isEmpty() || description.isEmpty()) {
             Toast.makeText(getContext(), "Molimo popunite sva polja!", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -147,8 +149,11 @@ public class AddPostFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference postsRef = database.getReference("posts");
 
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+
         String postId = postsRef.push().getKey();
-        Post post = new Post(author, breed, description, phone, picture, title);
+        Post post = new Post(currentUser.getEmail(), breed, description, phone, picture, title);
         postsRef.child(postId).setValue(post)
                 .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Objava uspješno dodana!", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e -> Toast.makeText(getContext(), "Greška pri dodavanju objave: " + e.getMessage(), Toast.LENGTH_SHORT).show());
