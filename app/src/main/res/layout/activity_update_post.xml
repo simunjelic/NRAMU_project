@@ -8,6 +8,14 @@
         android:padding="16dp"
         tools:context=".UpdatePostActivity">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/updateButtonUploadImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
+        android:text="Odaberi drugu sliku" />
+
     <EditText
         android:id="@+id/updateTitleEditText"
         android:layout_width="match_parent"
@@ -15,6 +23,10 @@
         android:layout_below="@id/postImage"
         android:hint="Naslov"
         android:padding="8dp"
+        android:layout_marginTop="10dp"
+        android:height="50dp"
+        android:background="@drawable/registration_drawable"
+        android:gravity="center"
         android:inputType="text" />
 
     <EditText
@@ -24,6 +36,10 @@
         android:layout_below="@id/updateTitleEditText"
         android:hint="Vrsta"
         android:padding="8dp"
+        android:layout_marginTop="10dp"
+        android:height="50dp"
+        android:background="@drawable/registration_drawable"
+        android:gravity="center"
         android:inputType="text" />
 
     <EditText
@@ -42,6 +58,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/updateAuthorEditText"
         android:hint="Broj telefona"
+        android:layout_marginTop="10dp"
+        android:height="50dp"
+        android:background="@drawable/registration_drawable"
+        android:gravity="center"
         android:padding="8dp"
         android:inputType="phone" />
 
@@ -51,22 +71,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/updatePhoneEditText"
         android:hint="Opis objave"
+        android:layout_marginTop="10dp"
+        android:height="50dp"
+        android:background="@drawable/registration_drawable"
+        android:gravity="center"
         android:padding="8dp"
         android:inputType="textMultiLine" />
 
-    <Button
-        android:id="@+id/updateButtonUploadImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Odabiri drugu sliku" />
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/updateSubmitPostButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/updateDescriptionEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
+        android:padding="8dp"
         android:text="Uredi objavu" />
 
     </LinearLayout>
