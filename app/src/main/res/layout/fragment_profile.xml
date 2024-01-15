@@ -24,6 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/currentUserTextView"
         android:layout_marginTop="16dp"
+        android:height="50dp"
+        android:padding="8dp"
+        android:background="@drawable/registration_drawable"
+        android:gravity="center"
         android:hint="Nova lozinka"
         android:inputType="textPassword" />
 
@@ -34,6 +38,10 @@
         android:layout_below="@id/newPasswordEditText"
         android:layout_marginTop="16dp"
         android:hint="Trenutna lozinka"
+        android:height="50dp"
+        android:padding="8dp"
+        android:background="@drawable/registration_drawable"
+        android:gravity="center"
         android:inputType="textPassword" />
 
 
@@ -45,6 +53,8 @@
         android:layout_below="@id/currentPasswordEditText"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
+
         android:text="Promjena lozinke" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -54,8 +64,10 @@
         android:layout_below="@id/currentPasswordEditText"
         android:layout_marginTop="76dp"
         android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/udomiRed"
+        android:textColor="@color/white"
 
-        android:text="Izbrisi profil" />
+        android:text="Izbriši profil" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/Logout"
@@ -64,6 +76,8 @@
         android:layout_below="@id/updatePasswordButton"
         android:layout_marginTop="70dp"
         android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
+
         android:text="Odjava" />
 
 </RelativeLayout>

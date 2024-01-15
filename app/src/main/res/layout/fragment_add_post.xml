@@ -7,6 +7,15 @@
     android:padding="16dp"
     tools:context=".fragment.AddPostFragment">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonUploadImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:text="Odabir slike" />
+
     <EditText
         android:id="@+id/titleEditText"
         android:layout_width="match_parent"
@@ -14,6 +23,9 @@
         android:layout_below="@id/postImage"
         android:hint="Naslov"
         android:padding="8dp"
+        android:background="@drawable/registration_drawable"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:inputType="text" />
 
     <EditText
@@ -23,6 +35,9 @@
         android:layout_below="@id/titleEditText"
         android:hint="Vrsta"
         android:padding="8dp"
+        android:background="@drawable/registration_drawable"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:inputType="text" />
 
     <EditText
@@ -33,6 +48,9 @@
         android:hint="Autor"
         android:padding="8dp"
         android:inputType="text"
+        android:background="@drawable/registration_drawable"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:visibility="gone"/>
 
     <EditText
@@ -42,6 +60,9 @@
         android:layout_below="@id/authorEditText"
         android:hint="Broj telefona"
         android:padding="8dp"
+        android:background="@drawable/registration_drawable"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:inputType="phone" />
 
     <EditText
@@ -51,21 +72,22 @@
         android:layout_below="@id/phoneEditText"
         android:hint="Opis objave"
         android:padding="8dp"
+        android:background="@drawable/registration_drawable"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:height="100dp"
         android:inputType="textMultiLine" />
 
-    <Button
-        android:id="@+id/buttonUploadImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Odabir slike" />
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submitPostButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/descriptionEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
+        android:padding="10dp"
         android:text="Dodaj objavu" />
 
 </LinearLayout>
