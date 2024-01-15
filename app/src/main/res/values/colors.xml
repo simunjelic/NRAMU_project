@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="udomiOrange">#ff5722</color>
+    <color name="udomiBlue">#225dff</color>
+    <color name="udomiTeal">#22ffc4</color>
+    <color name="udomiRed">#fc1919</color>
 </resources>
