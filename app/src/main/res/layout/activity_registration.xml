@@ -7,7 +7,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/udomiTeal"
+    android:background="@drawable/paw2"
+    android:scaleType="fitXY"
+    android:tileMode="repeat"
     tools:context=".RegistrationActivity">
 
     <androidx.cardview.widget.CardView
@@ -23,6 +25,7 @@
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:padding="24dp"
+            android:backgroundTint="#FBFCFA"
             android:background="@drawable/registration_drawable">
 
             <TextView
