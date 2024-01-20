@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/filter_dialog.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Odaberite opciju sortiranja"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="8dp"/>
+
+    <RadioGroup
+        android:id="@+id/sortingOptionsGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioNewest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sortiraj po datumu: Najnovije prvo"/>
+
+        <RadioButton
+            android:id="@+id/radioOldest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sortiraj po datumu: Najstarije prvo"/>
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/applyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
+        android:text="Sortiraj"/>
+</LinearLayout>
+
