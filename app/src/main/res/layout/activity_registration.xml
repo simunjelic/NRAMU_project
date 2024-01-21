@@ -83,7 +83,8 @@
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Ime"
-                android:gravity="center"
+                android:drawableLeft="@drawable/baseline_name_outline_24"
+                android:drawablePadding="8dp"
                 android:textColor="@color/black" />
 
             <EditText
@@ -94,7 +95,8 @@
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Prezime"
-                android:gravity="center"
+                android:drawableLeft="@drawable/baseline_name_outline_24"
+                android:drawablePadding="8dp"
                 android:textColor="@color/black" />
 
             <EditText
@@ -105,7 +107,8 @@
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Broj telefona"
-                android:gravity="center"
+                android:drawableLeft="@drawable/baseline_phone_24"
+                android:drawablePadding="8dp"
                 android:textColor="@color/black" />
 
             <androidx.appcompat.widget.AppCompatButton

@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth auth;
@@ -42,6 +44,9 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String user = signupEmail.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
+                String name = signupName.getText().toString().trim();
+                String lastName = signupLastName.getText().toString().trim();
+                String phoneNumber = signupPhoneNumber.getText().toString().trim();
 
                 if (user.isEmpty()){
                     signupEmail.setError("Email ne smije biti prazan.");
@@ -53,6 +58,8 @@ public class RegistrationActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
+                                saveAdditionalUserInfo(name, lastName, phoneNumber);
+
                                 Toast.makeText(RegistrationActivity.this, "Registracija uspješna!", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
                             } else{
@@ -71,5 +78,17 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void saveAdditionalUserInfo(String name, String lastName, String phoneNumber) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        String userId = auth.getCurrentUser().getUid();
+
+        DatabaseReference usersRef = database.getReference("users");
+
+        usersRef.child(userId).child("name").setValue(name);
+        usersRef.child(userId).child("lastName").setValue(lastName);
+        usersRef.child(userId).child("phoneNumber").setValue(phoneNumber);
     }
 }

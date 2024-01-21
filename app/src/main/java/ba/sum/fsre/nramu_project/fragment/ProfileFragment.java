@@ -21,17 +21,23 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import ba.sum.fsre.nramu_project.LoginActivity;
 import ba.sum.fsre.nramu_project.MainActivity;
+import ba.sum.fsre.nramu_project.Model.User;
 import ba.sum.fsre.nramu_project.R;
 import ba.sum.fsre.nramu_project.RegistrationActivity;
 
 public class ProfileFragment extends Fragment {
 
     private TextView currentUserTextView;
-    private EditText newPasswordEditText, currentPasswordEditText;
-    private Button updatePasswordButton,logoutButton,deleteUser;
+    private EditText newPasswordEditText, currentPasswordEditText, editTextName, editTextLastName, editTextPhoneNumber;
+    private Button updatePasswordButton,logoutButton,deleteUser, updateProfileDetailsButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,9 +48,12 @@ public class ProfileFragment extends Fragment {
         newPasswordEditText = view.findViewById(R.id.newPasswordEditText);
         currentPasswordEditText = view.findViewById(R.id.currentPasswordEditText);
         updatePasswordButton = view.findViewById(R.id.updatePasswordButton);
+        updateProfileDetailsButton = view.findViewById(R.id.updateProfileDetails);
         logoutButton = view.findViewById(R.id.Logout);
         deleteUser = view.findViewById(R.id.deleteUser);
-
+        editTextName = view.findViewById(R.id.editTextName);
+        editTextLastName = view.findViewById(R.id.editTextLastName);
+        editTextPhoneNumber = view.findViewById(R.id.editTextPhoneNumber);
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -54,8 +63,28 @@ public class ProfileFragment extends Fragment {
 
         if (currentUser != null) {
             currentUserTextView.setText("Pozdrav " + username);
-        }
 
+            String userId = currentUser.getUid();
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        User user = dataSnapshot.getValue(User.class);
+                        if (user != null) {
+                            editTextName.setText(user.getName());
+                            editTextLastName.setText(user.getLastName());
+                            editTextPhoneNumber.setText(user.getPhoneNumber());
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle errors
+                }
+            });
+        }
 
         updatePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +108,32 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
+        updateProfileDetailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateProfileDetails();
+            }
+        });
         return view;
+    }
+
+    private void updateProfileDetails() {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
+
+            String newName = editTextName.getText().toString();
+            String newLastName = editTextLastName.getText().toString();
+            String newPhoneNumber = editTextPhoneNumber.getText().toString();
+
+            userRef.child("name").setValue(newName);
+            userRef.child("lastName").setValue(newLastName);
+            userRef.child("phoneNumber").setValue(newPhoneNumber);
+
+            Toast.makeText(getActivity(), "Podaci ažurirani!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void deleteCurenUser() {
