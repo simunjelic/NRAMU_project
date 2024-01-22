@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -42,7 +43,10 @@ public class PostsFragment extends Fragment {
 
         postsDatabase = FirebaseDatabase.getInstance();
         postRecyclerView = view.findViewById(R.id.postListView);
-        postRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        postRecyclerView.setLayoutManager(layoutManager);
 
         FirebaseRecyclerOptions<Post> options = new FirebaseRecyclerOptions.Builder<Post>().setQuery(
                 postsDatabase.getReference("posts"),
