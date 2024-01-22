@@ -1,5 +1,7 @@
 package ba.sum.fsre.nramu_project.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -104,7 +106,24 @@ public class ProfileFragment extends Fragment {
         deleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteCurenUser();
+                AlertDialog.Builder builder = new AlertDialog.Builder(deleteUser.getContext());
+                builder.setTitle("Potvrda brisanja");
+                builder.setMessage("Jeste li sigurni da želite obrisati profil?");
+
+                builder.setPositiveButton("Da", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        deleteCurenUser();
+                        Toast.makeText(deleteUser.getContext(), "Profil uspješno obrisan!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton("Ne", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -144,12 +163,10 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(getContext(), "Izbrisan profil", Toast.LENGTH_SHORT).show();
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(getActivity(), LoginActivity.class));
                 }else {
-                    Toast.makeText(getContext(), "Profil nije izbrisan", Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(getContext(), "Profil nije izbrisan.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
